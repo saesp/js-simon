@@ -26,7 +26,7 @@ console.log(arrRandNum);
 textRandNum.innerHTML = arrRandNum;
 
 // attivo timer 30 sec
-const timer = setTimeout(timerFun, 5000);
+const timer = setTimeout(timerFun, 2000);
 
 // tolgo numeri pagina
 function timerFun(){
@@ -34,20 +34,25 @@ function timerFun(){
 }
 
 // user deve inserire, uno alla volta, i numeri che ha visto precedentemente
-const inputNum = document.getElementById("input-num").value;
+const inputNum = document.getElementById("input-num");
 const buttonNum = document.getElementById("button-num");
 const arrNumUser = [];
-// let clickButton = true;
+const textNumUser = document.querySelector("h3");
 
-for (let i = 1; i <= 5; i++){
+function onButtonClick(){
+    if (arrNumUser.length < 5){
+        arrNumUser.push(inputNum.value);
+        console.log(arrNumUser);
+        inputNum.value = "";
+    }
 
-    buttonNum.addEventListener("click",
-        function(){
-            arrNumUser.push(inputNum);
-        }
-    )
+    console.log(arrNumUser.length);
+    textNumUser.innerHTML = `Numeri inseriti: ${arrNumUser}`;
 }
-console.log(arrNumUser);
+buttonNum.addEventListener("click", onButtonClick);
+
+
+
 
 
 
