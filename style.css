@@ -92,7 +92,8 @@ main{
     width: 70%;
 }  
 .cont-main{
-    border: 1px;
+    border: 1px orange;
+    border-style:dashed;
 }
 
 }
