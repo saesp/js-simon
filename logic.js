@@ -1,56 +1,83 @@
-// Visualizzare in pagina 5 numeri casuali;
-// Da lì parte un timer di 30 secondi;
 
-// Dopo 30 secondi i numeri scompaiono e l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente;
-// Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati;
-
-
-const textRandNum = document.querySelector("h2");
-const arrRandNum = [];
 
 // Visualizzare in pagina 5 numeri casuali;
+
 // Fun crea num random x 5 volte
-function randomNumFun(numMinFun, numMaxFun){
-    let randomF = Math.floor(Math.random()*(numMaxFun - numMinFun + 1) + numMinFun);
+function randomNumFunc(numMinFunc, numMaxFunc){
+    let randomF = Math.floor(Math.random()*(numMaxFunc - numMinFunc + 1) + numMinFunc);
 
     return randomF;
 }
 
+const arrRandNum = [];
 for (let i = 1; i <= 5; i++){
-    let randomNum = randomNumFun(1, 1000);
+    let randomNum = randomNumFunc(1, 100);
     arrRandNum.push(randomNum);
 }
 
 // numeri in pagina
 console.log(arrRandNum);
+const textRandNum = document.querySelector("h2");
 textRandNum.innerHTML = arrRandNum;
+const textTimer = document.getElementById("timer-text");
+textTimer.innerHTML = "Memorizza e attendi 5 secondi";
 
-// attivo timer 30 sec
-const timer = setTimeout(timerFun, 2000);
-
+// attivo timer 5 sec
+const timer = setTimeout(timerFunc, 5000); 
 // tolgo numeri pagina
-function timerFun(){
+function timerFunc(){
     textRandNum.innerHTML = "";
+    textTimer.innerHTML = "Inserisci i numeri che hai visto uno alla volta e nel giusto ordine";
 }
 
 // user deve inserire, uno alla volta, i numeri che ha visto precedentemente
 const inputNum = document.getElementById("input-num");
 const buttonNum = document.getElementById("button-num");
 const arrNumUser = [];
-const textNumUser = document.querySelector("h3");
 
-function onButtonClick(){
-    if (arrNumUser.length < 5){
-        arrNumUser.push(inputNum.value);
-        console.log(arrNumUser);
-        inputNum.value = "";
+// creare button
+buttonNum.addEventListener("click",  
+    function (){
+        if (arrNumUser.length < 4){
+            arrNumUser.push(inputNum.value);
+            console.log(arrNumUser);
+            inputNum.value = "";
+        } else if (arrNumUser.length < 5){
+            arrNumUser.push(inputNum.value);
+
+            document.getElementById("num-user").innerHTML = `Numeri inseriti: ${arrNumUser}`;
+            console.log("Numeri inseriti:", arrNumUser);
+
+            document.querySelector(".num-pc").innerHTML = `Numeri da indovinare: ${arrRandNum}`; 
+            console.log("Numeri da indovinare:", arrRandNum);
+
+            const textResult = document.querySelector("h3");
+            let arraysEqual = arraysEqualFunc(arrRandNum, arrNumUser);
+            if (arraysEqual === true){
+                textResult.innerHTML = "Hai indovinato tutti i numeri, hai vinto!";
+                textResult.style.color = "green";
+                console.log("Hai indovinato tutti i numeri, hai vinto!");
+                textTimer.innerHTML = "";
+            } else {
+                textResult.innerHTML = "Non hai indovinato tutti i numeri, hai perso!";
+                textResult.style.color = "red";
+                console.log("Non hai indovinato tutti i numeri, hai perso!");
+                textTimer.innerHTML = "";
+            }
+        }
     }
+)
 
-    console.log(arrNumUser.length);
-    textNumUser.innerHTML = `Numeri inseriti: ${arrNumUser}`;
+// Func Arrays uguali(?) 
+function arraysEqualFunc(a, b) {
+    if (a == b) return true;
+    if (a == null || b == null) return false;
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
 }
-buttonNum.addEventListener("click", onButtonClick);
-
 
 
 
