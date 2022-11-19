@@ -2,15 +2,16 @@
 
 // Visualizzare in pagina 5 numeri casuali;
 
-// Fun crea num random x 5 volte
+// Func crea num random 
 function randomNumFunc(numMinFunc, numMaxFunc){
     let randomF = Math.floor(Math.random()*(numMaxFunc - numMinFunc + 1) + numMinFunc);
 
     return randomF;
 }
 
+// crea num random x 4 volte
 const arrRandNum = [];
-for (let i = 1; i <= 5; i++){
+for (let i = 1; i <= 4; i++){
     let randomNum = randomNumFunc(1, 100);
     arrRandNum.push(" " + randomNum);
 }
@@ -38,11 +39,11 @@ const arrNumUser = [];
 // creare button
 buttonNum.addEventListener("click",  
     function (){
-        if (arrNumUser.length < 4){
+        if (arrNumUser.length < 3){
             arrNumUser.push(" " + inputNum.value);
             console.log(arrNumUser);
             inputNum.value = "";
-        } else if (arrNumUser.length < 5){
+        } else if (arrNumUser.length < 4){
             arrNumUser.push(" " + inputNum.value);
 
             document.getElementById("num-user").innerHTML = `Numeri inseriti: ${arrNumUser}`;
