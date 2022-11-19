@@ -9,6 +9,8 @@ body{
     font-size: 20px;
 }
 
+
+/* header */
 header{
     background-color: rgb(0, 139, 116);
     color: white;
@@ -24,10 +26,8 @@ h1{
 
 /* main */
 main{
-    padding: 60px 0;
+    margin: 60px auto;
     width: 50%;
-    margin: auto;
-    margin-bottom: 33.6px;
 }
 
 .cont-main{
@@ -91,10 +91,12 @@ footer{
 
 /* main */
 main{
+    margin: 50px auto;
     width: 70%;
 }  
 .cont-main{
     border: 2px dashed orange;
+    padding: 75px 30px;
 }
 
 }
