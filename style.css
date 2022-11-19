@@ -94,8 +94,7 @@ main{
     width: 70%;
 }  
 .cont-main{
-    border: 1px orange;
-    border-style:dashed;
+    border: 2px dashed orange;
 }
 
 }
