@@ -12,7 +12,7 @@ body{
 header{
     background-color: rgb(0, 139, 116);
     color: white;
-    padding: 23px;
+    padding: 25px;
 }
 .fa-brain{
     color: orange;
@@ -27,6 +27,7 @@ main{
     padding: 60px 0;
     width: 50%;
     margin: auto;
+    margin-bottom: 33.6px;
 }
 
 .cont-main{
@@ -71,6 +72,7 @@ button{
     cursor: pointer;
 }
 
+
 /* footer */
 footer{
     width: 100%;
@@ -79,7 +81,7 @@ footer{
     background-color: rgb(0, 139, 116);
     color: white;
     font-size: 11px;
-    padding: 10px 23px;
+    padding: 10px 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
