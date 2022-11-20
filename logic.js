@@ -29,45 +29,47 @@ const timer = setTimeout(timerFunc, 5000);
 function timerFunc(){
     textRandNum.innerHTML = "";
     textTimer.innerHTML = "Inserisci i numeri che hai visto uno alla volta e nel giusto ordine";
-}
 
-// user deve inserire, uno alla volta, i numeri che ha visto precedentemente
-const inputNum = document.getElementById("input-num");
-const buttonNum = document.getElementById("button-num");
-const arrNumUser = [];
-
-// creare button
-buttonNum.addEventListener("click",  
-    function (){
-        if (arrNumUser.length < 3){
-            arrNumUser.push(" " + inputNum.value);
-            console.log(arrNumUser);
-            inputNum.value = "";
-        } else if (arrNumUser.length < 4){
-            arrNumUser.push(" " + inputNum.value);
-
-            document.getElementById("num-user").innerHTML = `Numeri inseriti: ${arrNumUser}`;
-            console.log("Numeri inseriti:", arrNumUser);
-
-            document.querySelector(".num-pc").innerHTML = `Numeri da indovinare: ${arrRandNum}`; 
-            console.log("Numeri da indovinare:", arrRandNum);
-
-            const textResult = document.querySelector("h3");
-            let arraysEqual = arraysEqualFunc(arrRandNum, arrNumUser);
-            if (arraysEqual == true){
-                textResult.innerHTML = "Hai indovinato tutti i numeri, hai vinto!";
-                textResult.style.color = "green";
-                console.log("Hai indovinato tutti i numeri, hai vinto!");
-                textTimer.innerHTML = "";
-            } else {
-                textResult.innerHTML = "Non hai indovinato tutti i numeri, hai perso!";
-                textResult.style.color = "red";
-                console.log("Non hai indovinato tutti i numeri, hai perso!");
-                textTimer.innerHTML = "";
+    // user deve inserire, uno alla volta, i numeri che ha visto precedentemente
+    const inputNum = document.getElementById("input-num");
+    const buttonNum = document.getElementById("button-num");
+    const arrNumUser = [];
+    
+    // creare button
+    buttonNum.addEventListener("click",  
+        function (){
+            if (arrNumUser.length < 3){
+                arrNumUser.push(" " + inputNum.value);
+                console.log(arrNumUser);
+                inputNum.value = "";
+            } else if (arrNumUser.length < 4){
+                arrNumUser.push(" " + inputNum.value);
+    
+                document.getElementById("num-user").innerHTML = `Numeri inseriti: ${arrNumUser}`;
+                console.log("Numeri inseriti:", arrNumUser);
+    
+                document.querySelector(".num-pc").innerHTML = `Numeri da indovinare: ${arrRandNum}`; 
+                console.log("Numeri da indovinare:", arrRandNum);
+    
+                const textResult = document.querySelector("h3");
+                let arraysEqual = arraysEqualFunc(arrRandNum, arrNumUser);
+                if (arraysEqual == true){
+                    textResult.innerHTML = "Hai indovinato tutti i numeri, hai vinto!";
+                    textResult.style.color = "green";
+                    console.log("Hai indovinato tutti i numeri, hai vinto!");
+                    textTimer.innerHTML = "";
+                } else {
+                    textResult.innerHTML = "Non hai indovinato tutti i numeri, hai perso!";
+                    textResult.style.color = "red";
+                    console.log("Non hai indovinato tutti i numeri, hai perso!");
+                    textTimer.innerHTML = "";
+                }
             }
         }
-    }
-)
+    )
+    
+}
+
 
 // Func Arrays uguali(?) 
 function arraysEqualFunc(a, b) {
