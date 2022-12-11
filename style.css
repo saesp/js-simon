@@ -72,7 +72,13 @@ button{
     cursor: pointer;
 }
 
-
+#countdowntimer{
+    display: block;
+    margin-top: 16px;
+    font-size: 35px;
+    color: red;
+    font-family: 'DotGothic16', sans-serif;
+}
 /* footer */
 footer{
     width: 100%;

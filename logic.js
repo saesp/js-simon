@@ -23,10 +23,26 @@ textRandNum.innerHTML = arrRandNum;
 const textTimer = document.getElementById("timer-text");
 textTimer.innerHTML = "Memorizza e attendi 5 secondi";
 
+let timeleft = 5;
+
+let downloadTimer = setInterval(function(){
+    timeleft--;
+    console.log(timeleft);
+    document.getElementById("countdowntimer").textContent = timeleft;
+
+    if(timeleft <= 0){
+        clearInterval(downloadTimer);
+    }
+
+},1000);
+
+
 // attivo timer 5 sec
-const timer = setTimeout(timerFunc, 5000); 
+setTimeout(timerFunc, 5000); 
 // tolgo numeri pagina
 function timerFunc(){
+    document.getElementById("countdowntimer").style.display = "none";
+
     textRandNum.innerHTML = "";
     textTimer.innerHTML = "Inserisci i numeri che hai visto uno alla volta e nel giusto ordine";
 
@@ -70,17 +86,24 @@ function timerFunc(){
     
 }
 
+// Func Arrays equal(?) 
+function arraysEqualFunc(a, b) {
+    return Array.isArray(a) &&
+        Array.isArray(b) &&
+        a.length === b.length &&
+        a.every((val, index) => val === b[index]);
+}
 
 // Func Arrays uguali(?) 
-function arraysEqualFunc(a, b) {
-    if (a == b) return true;
-    if (a == null || b == null) return false;
-    if (a.length != b.length) return false;
-    for (var i = 0; i < a.length; ++i) {
-      if (a[i] != b[i]) return false;
-    }
-    return true;
-}
+// function arraysEqualFunc(a, b) {
+//     if (a == b) return true;
+//     if (a == null || b == null) return false;
+//     if (a.length != b.length) return false;
+//     for (var i = 0; i < a.length; ++i) {
+//       if (a[i] != b[i]) return false;
+//     }
+//     return true;
+// }
 
 
 
