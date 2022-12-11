@@ -11,7 +11,7 @@ function randomNumFunc(numMinFunc, numMaxFunc){
 
 // crea num random x 4 volte
 const arrRandNum = [];
-for (let i = 1; i <= 4; i++){
+for (let i = 1; i <= 3; i++){
     let randomNum = randomNumFunc(1, 100);
     arrRandNum.push(" " + randomNum);
 }
@@ -24,7 +24,6 @@ const textTimer = document.getElementById("timer-text");
 textTimer.innerHTML = "Memorizza e attendi 5 secondi";
 
 let timeleft = 5;
-
 let downloadTimer = setInterval(function(){
     timeleft--;
     console.log(timeleft);
@@ -54,11 +53,11 @@ function timerFunc(){
     // creare button
     buttonNum.addEventListener("click",  
         function (){
-            if (arrNumUser.length < 3){
+            if (arrNumUser.length < 2){
                 arrNumUser.push(" " + inputNum.value);
                 console.log(arrNumUser);
                 inputNum.value = "";
-            } else if (arrNumUser.length < 4){
+            } else if (arrNumUser.length < 3){
                 arrNumUser.push(" " + inputNum.value);
     
                 document.getElementById("num-user").innerHTML = `Numeri inseriti: ${arrNumUser}`;
